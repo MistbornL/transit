@@ -56,7 +56,14 @@ export const Header = () => {
                 {MENUITEMS.map((item, index) => {
                   return (
                     <NavigationMenuItem key={index}>
-                      <Link to={item.link}>{item.title}</Link>
+                      <Link
+                        className={`${
+                          location.pathname === item.link && "text-orange-600"
+                        }  hover:text-orange-600 transition-all`}
+                        to={item.link}
+                      >
+                        {item.title}
+                      </Link>
                     </NavigationMenuItem>
                   );
                 })}
@@ -68,10 +75,12 @@ export const Header = () => {
         <div className="flex justify-center gap-10 flex-col items-center">
           <div className="flex flex-col items-center space-y-2">
             <h1 className="uppercase text-white text-7xl">we make shipping</h1>
-            <h3 className="text-gray-700 text-2xl">A logistic company</h3>
+            <h3 className="text-gray-400 text-2xl">A logistic company</h3>
           </div>
 
-          <Button className="uppercase bg-orange-600">get started!</Button>
+          <Button className="uppercase bg-orange-600 rounded-sm px-20 py-8 text-lg hover:bg-transparent hover:border-solid hover:ring-1 hover:ring-white text-white transition-all">
+            get started!
+          </Button>
         </div>
       </div>
     </div>
