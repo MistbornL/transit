@@ -3,15 +3,14 @@ import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
-} from "./ui/navigation-menu";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+} from "@/components/ui/navigation-menu";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu } from "lucide-react";
 import hero from "../assets/hero_bg_2.jpg.webp";
 import { useAnimation } from "framer-motion";
 import { MENUITEMS } from "../const";
 
 export const Header = () => {
-  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const navigate = useNavigate();
   const ScrollToTopOnRedirect = () => {
