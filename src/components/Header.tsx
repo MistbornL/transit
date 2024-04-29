@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { Link, useNavigate } from "react-router-dom";
-import { Menu } from "lucide-react";
+import { Link } from "react-router-dom";
+// import { Menu } from "lucide-react";
 import hero from "../assets/hero_bg_2.jpg.webp";
 import { useAnimation } from "framer-motion";
 import { MENUITEMS } from "../const";
 
 export const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const ScrollToTopOnRedirect = () => {
-    const navigate = useNavigate();
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [navigate]);
+  // const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  // const ScrollToTopOnRedirect = () => {
+  //   const navigate = useNavigate();
+  //   useEffect(() => {
+  //     window.scrollTo(0, 0);
+  //   }, [navigate]);
 
-    return null; // Render nothing (null) in the component
-  };
+  //   return null; // Render nothing (null) in the component
+  // };
   const controls = useAnimation();
 
   useEffect(() => {
@@ -34,9 +34,8 @@ export const Header = () => {
       <img className="w-full  object-cover" src={hero} alt="travel" />
       {/* middle */}
       <div className="absolute w-full h-full flex-col">
-        <ScrollToTopOnRedirect />
         {/* Responsive menu */}
-        <div className="flex md:hidden justify-center flex-col items-center gap-4">
+        {/* <div className="flex md:hidden justify-center flex-col items-center gap-4">
           <h1 className="text-5xl text-white">Skybound</h1>
           <Menu
             onClick={() => {
@@ -46,16 +45,18 @@ export const Header = () => {
             color="white"
             size={40}
           />
-        </div>
+        </div> */}
         {/* menu */}
-        <div className="py-2 w-full md:flex hidden justify-center text-white top-0 z-50">
+        <div className="py-2 w-full md:flex hidden justify-between max-w-5xl mt-10 mx-auto text-white top-0 z-50">
+          <h1 className="text-3xl">Logis</h1>
+
           <NavigationMenu>
-            <NavigationMenuList className="flex justify-center items-center">
-              <div className="flex">
+            <NavigationMenuList className="flex justify-between items-center">
+              <div className="flex gap-10">
                 {MENUITEMS.map((item, index) => {
                   return (
                     <NavigationMenuItem key={index}>
-                      <Link to={item.link}>{item.link}</Link>
+                      <Link to={item.link}>{item.title}</Link>
                     </NavigationMenuItem>
                   );
                 })}
