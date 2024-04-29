@@ -12,7 +12,6 @@ import { MENUITEMS } from "../const";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const navigate = useNavigate();
   const ScrollToTopOnRedirect = () => {
     const navigate = useNavigate();
     useEffect(() => {
@@ -28,15 +27,11 @@ export const Header = () => {
   }, [controls]);
   return (
     <div
-      className={`${
-        window.location.pathname === "/blog" &&
-        "2xl:h-[133px] lg:h-[133px] md:h-[133px] h-[133px]"
-      } flex relative h-[400px] md:h-[660px] lg:h-[660px] 2xl:h-[742px] w-full menu`}
+      className={` flex relative h-[400px] md:h-[660px] lg:h-[660px] 2xl:h-[742px] w-full menu`}
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       <img className="w-full  object-cover" src={hero} alt="travel" />
-
       {/* middle */}
       <div className="absolute w-full h-full flex-col">
         <ScrollToTopOnRedirect />
@@ -68,8 +63,6 @@ export const Header = () => {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-
-        {/* foot */}
       </div>
     </div>
   );
