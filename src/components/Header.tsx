@@ -28,9 +28,7 @@ export const Header = () => {
     controls.start({ opacity: 1, y: 0 });
   }, [controls]);
   return (
-    <div
-      className={` flex relative h-[400px] md:h-[660px] lg:h-[660px] 2xl:h-[742px] w-full menu`}
-    >
+    <div className={`flex relative h-[800px] w-full menu`}>
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       <img className="w-full object-cover" src={hero} alt="travel" />
@@ -48,7 +46,7 @@ export const Header = () => {
           />
         </div>
         <div className="py-2 w-full md:flex hidden justify-between max-w-5xl mt-10 mx-auto text-white top-0 z-50">
-          <h1 className="text-3xl">Logis</h1>
+          <h1 className="text-3xl ">Logis</h1>
 
           <NavigationMenu>
             <NavigationMenuList className="flex justify-between items-center">
@@ -74,7 +72,9 @@ export const Header = () => {
 
         <div className="flex justify-center gap-10 flex-col items-center">
           <div className="flex flex-col items-center space-y-2">
-            <h1 className="uppercase text-white text-7xl">we make shipping</h1>
+            <h1 className="uppercase text-white md:text-7xl text-4xl">
+              we make shipping
+            </h1>
             <h3 className="text-gray-400 text-2xl">A logistic company</h3>
           </div>
 

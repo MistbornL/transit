@@ -1,0 +1,5 @@
+.work {
+  background-image: url("./assets/hero_bg_4.jpg.webp");
+  object-fit: cover;
+  background-position: bottom;
+}
