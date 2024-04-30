@@ -1,3 +1,5 @@
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+
 export const MENUITEMS = [
   { title: "Home", link: "/" },
   { title: "About us", link: "/about" },
@@ -39,6 +41,65 @@ export const HOWITWORKS = [
       "Error minus sint nobis dolor",
       "Voluptatum porro expedita labore esse",
       "Voluptas unde sit pariatur earum",
+    ],
+  },
+];
+
+export const OURTEAM = [
+  {
+    id: 1,
+    img: "",
+    fullName: "Christine Rooster",
+    position: "CO-FOUNDER, PRESIDENT",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.",
+    socials: [
+      { img: Facebook, name: "facebook", link: "#" },
+      { img: Twitter, name: "twitter", link: "#" },
+      {
+        img: Linkedin,
+        name: "linkedin",
+        link: "https://www.linkedin.com/in/christinerooster",
+      },
+      { img: Instagram, name: "instagram", link: "#" },
+    ],
+  },
+
+  {
+    id: 2,
+    img: "",
+    fullName: "Christine Rooster",
+    position: "CO-FOUNDER, PRESIDENT",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.",
+    socials: [
+      { img: `<Facebook />`, name: "facebook", link: "#" },
+      { img: Twitter, name: "twitter", link: "#" },
+      {
+        img: Facebook,
+        name: "linkedin",
+        link: "https://www.linkedin.com/in/christinerooster",
+      },
+      { img: Instagram, name: "instagram", link: "#" },
+    ],
+  },
+
+  {
+    id: 3,
+    img: "",
+    fullName: "Christine Rooster",
+    position: "CO-FOUNDER, PRESIDENT",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi at consequatur unde molestiae quidem provident voluptatum deleniti quo iste error eos est praesentium distinctio cupiditate tempore suscipit inventore deserunt tenetur.",
+    socials: [
+      { img: Facebook, name: "facebook", link: "#" },
+      { img: Twitter, name: "twitter", link: "#" },
+      {
+        img: Facebook,
+        name: "linkedin",
+        link: "https://www.linkedin.com/in/christinerooster",
+      },
+      { img: Instagram, name: "instagram", link: "#" },
     ],
   },
 ];

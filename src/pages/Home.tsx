@@ -1,7 +1,8 @@
-import { Check } from "lucide-react";
+import { Check, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import about from "@/assets/about.webp";
-import { HOWITWORKS } from "@/const";
+import { HOWITWORKS, OURTEAM } from "@/const";
+import person from "@/assets/person_1.jpg.webp";
 export const Home = () => {
   return (
     <div className="flex flex-col">
@@ -78,6 +79,60 @@ export const Home = () => {
                       return (
                         <li key={index} className="flex gap-4">
                           <Check color="green" /> {listItem}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="relative flex flex-col items-center justify-center py-20 ">
+        <div className="z-10 flex flex-col mb-20 gap-4 items-center">
+          <h1 className="uppercase text-4xl text-orange-600">our team</h1>
+          <Separator className="h-1 w-24 bg-orange-600" />
+        </div>
+
+        <div className="z-10 w-full flex flex-wrap max-w-6xl justify-center space-x-10 flex-wrap mx-auto gap-10">
+          {OURTEAM.map((item) => {
+            return (
+              <div key={item.id} className="flex flex-col">
+                <div className="rounded-full mb-10">
+                  <img
+                    className="rounded-full w-60 h-60"
+                    src={person}
+                    alt={item.fullName}
+                  />
+                </div>
+
+                <div className="flex flex-col gap-10">
+                  <div className="flex-col gap-2 flex">
+                    <h1 className="text-black">{item.fullName}</h1>
+                    <h2 className="text-gray-500">{item.position}</h2>
+                  </div>
+
+                  <p className="max-w-xs">{item.description}</p>
+
+                  <ul className="z-10 flex gap-4">
+                    {item.socials.map((listItem, index) => {
+                      return (
+                        <li
+                          key={index}
+                          className="bg-gray-500 rounded-full px-2 py-2"
+                          onClick={() => window.open(listItem.link, "_blank")}
+                        >
+                          {listItem.name === "facebook" ? (
+                            <Facebook color="white" />
+                          ) : listItem.name === "twitter" ? (
+                            <Twitter color="white" />
+                          ) : listItem.name === "linkedin" ? (
+                            <Linkedin color="white" />
+                          ) : listItem.name === "instagram" ? (
+                            <Instagram color="white" />
+                          ) : null}
                         </li>
                       );
                     })}
