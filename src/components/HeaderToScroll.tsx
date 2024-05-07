@@ -35,7 +35,7 @@ export const HeaderToScroll = () => {
     <motion.div
       animate={controls}
       transition={{ duration: 0.2 }}
-      className={`fixed bg-white px-40 py-8 items-center w-full md:flex hidden justify-between text-black top-0 z-50`}
+      className={`fixed bg-white px-40 py-6 items-center w-full md:flex hidden justify-between text-black top-0 z-50`}
     >
       <h1 className="text-3xl ">Logis</h1>
 
