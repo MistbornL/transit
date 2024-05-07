@@ -103,3 +103,60 @@ export const OURTEAM = [
     ],
   },
 ];
+
+export const OURSERVICES = [
+  {
+    img: "",
+    title: "Air Freight",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
+  },
+  {
+    img: "",
+    title: "Air Freight",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
+  },
+  {
+    img: "",
+    title: "Air Freight",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
+  },
+  {
+    img: "",
+    title: "Air Freight",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
+  },
+  {
+    img: "",
+    title: "Air Freight",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
+  },
+  {
+    img: "",
+    title: "Air Freight",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
+  },
+  {
+    img: "",
+    title: "Air Freight",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
+  },
+  {
+    img: "",
+    title: "Air Freight",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
+  },
+  {
+    img: "",
+    title: "Air Freight",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.",
+  },
+];

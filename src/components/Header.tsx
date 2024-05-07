@@ -1,32 +1,38 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { Menu } from "lucide-react";
 import hero from "../assets/hero_bg_2.jpg.webp";
-import { useAnimation } from "framer-motion";
 import { MENUITEMS } from "../const";
 import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 
-export const Header = () => {
+interface HeaderProps {
+  aboutSectionRef?: React.RefObject<HTMLElement>;
+  howItWorksSectionRef?: React.RefObject<HTMLElement>;
+  ourTeamSectionRef?: React.RefObject<HTMLElement>;
+  servicesSectionRef?: React.RefObject<HTMLElement>;
+  contactSectionRef?: React.RefObject<HTMLElement>;
+}
+
+export const Header: React.FC<HeaderProps> = (
+  {
+    // aboutSectionRef,
+    // howItWorksSectionRef,
+    // ourTeamSectionRef,
+    // servicesSectionRef,
+    // contactSectionRef,
+  }
+) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const ScrollToTopOnRedirect = () => {
-    const navigate = useNavigate();
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [navigate]);
-
-    return null; // Render nothing (null) in the component
-  };
-  const controls = useAnimation();
-
-  useEffect(() => {
-    controls.start({ opacity: 1, y: 0 });
-  }, [controls]);
+  // const scrollToSection = (ref) => {
+  //   ref.current.scrollIntoView({ behavior: "smooth" });
+  //   setIsMenuOpen(false); // Close the menu after scrolling
+  // };
   return (
     <div className={`flex relative h-[800px] w-full menu`}>
       <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -45,6 +51,31 @@ export const Header = () => {
             size={40}
           />
         </div>
+
+        {isMenuOpen && (
+          <div className="absolute z-20 w-56 rounded-md items-center flex flex-col px-4 py-2 top-28 bg-slate-50 ">
+            <NavigationMenu>
+              <NavigationMenuList className="flex justify-center items-center ">
+                <div className="flex flex-col">
+                  {MENUITEMS.map((item, index) => {
+                    return (
+                      <NavigationMenuItem key={index} className={``}>
+                        <Link
+                          className={`py-4 hover:text-primary transition-all duration-200 items-center flex justify-center text-center `}
+                          to={item.link}
+                          key={index}
+                          // onClick={() => scrollToSection(item.title.includes("services") )}
+                        >
+                          {item.title}
+                        </Link>
+                      </NavigationMenuItem>
+                    );
+                  })}
+                </div>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
+        )}
         <div className="py-2 w-full md:flex hidden justify-between max-w-5xl mt-10 mx-auto text-white top-0 z-50">
           <h1 className="text-3xl ">Logis</h1>
 
