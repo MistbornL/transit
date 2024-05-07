@@ -13,13 +13,15 @@ export const HeaderToScroll = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    controls.set({ translateY: -110 });
+
     const handleScroll = () => {
       if (window.scrollY > 290 && !isVisible) {
         setIsVisible(true);
         controls.start({ translateY: 0 });
       } else if (window.scrollY <= 290 && isVisible) {
         setIsVisible(false);
-        controls.start({ translateY: -100 });
+        controls.start({ translateY: -110 });
       }
     };
 
