@@ -1,17 +1,41 @@
-import { AirVent, Check, Facebook, Instagram } from "lucide-react";
+import { Check, Facebook, Instagram } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import about from "@/assets/about.webp";
 import { HOWITWORKS, OURSERVICES } from "@/const";
 import { Header } from "@/components/Header";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { HeaderToScroll } from "@/components/HeaderToScroll";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { motion, useAnimation } from "framer-motion";
+import Autoplay from "embla-carousel-autoplay";
+
 export const Home = () => {
+  const [isHovered, setIsHovered] = useState(false);
   const aboutSectionRef = useRef(null);
   const howItWorksSectionRef = useRef(null);
   // const ourTeamSectionRef = useRef(null);
   const servicesSectionRef = useRef(null);
   const contactSectionRef = useRef(null);
+  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
+  const controls = useAnimation();
+
+  // Function to handle hover state
+  const handleHover = (isHovered: boolean) => {
+    if (isHovered) {
+      // On hover, animate y to 100
+      controls.start({ y: -100 });
+    } else {
+      // On hover out, animate y to -200
+      controls.start({ y: 100 });
+    }
+  };
   return (
     <div className="flex flex-col">
       <header>
@@ -167,6 +191,7 @@ export const Home = () => {
             })}
           </div>
         </section> */}
+
         {/*Services */}
         <section
           ref={servicesSectionRef}
@@ -182,9 +207,7 @@ export const Home = () => {
               return (
                 <div key={index} className="flex flex-col">
                   <div className="flex gap-4">
-                    <div className="rounded-full mb-10">
-                      <AirVent size={"50px"} color="orange" />
-                    </div>
+                    <div className="rounded-full mb-10"></div>
                     <div className="flex flex-col gap-2">
                       <h1 className="text-black font-bold">{item.title}</h1>
                       <p className="text-gray-700 text-md max-w-[240px]">
@@ -201,6 +224,50 @@ export const Home = () => {
             })}
           </div>
         </section>
+
+        {/* PARTNERS */}
+        <section className="flex flex-col items-center w-full mt-14">
+          <div className="z-10 flex flex-col mb-10 gap-4 items-center">
+            <h1 className="uppercase text-4xl text-orange-600">Partners</h1>
+            <Separator className="h-1 w-24 bg-orange-600" />
+          </div>
+          <Carousel
+            plugins={[plugin.current]}
+            className="w-full max-w-6xl"
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+          >
+            <CarouselContent>
+              <CarouselItem
+                onMouseEnter={() => handleHover(true)}
+                onMouseLeave={() => handleHover(false)}
+                className="relative basis-1/3 hover:scale-105 transition-all cursor-pointer"
+              >
+                <img src={about} />
+
+                <motion.h1
+                  initial={{ y: 100 }}
+                  className="text-center text-lg text-white"
+                  animate={controls}
+                >
+                  Air Transports
+                </motion.h1>
+              </CarouselItem>
+              <CarouselItem className="basis-1/3">
+                <img src={about} />
+              </CarouselItem>
+              <CarouselItem className="basis-1/3">
+                <img src={about} />
+              </CarouselItem>
+              <CarouselItem className="basis-1/3">
+                <img src={about} />
+              </CarouselItem>
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </section>
+
         {/* CONTACT */}
         <section
           ref={contactSectionRef}
