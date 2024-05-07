@@ -1,22 +1,14 @@
-import {
-  AirVent,
-  Check,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
+import { AirVent, Check, Facebook, Instagram } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import about from "@/assets/about.webp";
-import { HOWITWORKS, OURSERVICES, OURTEAM } from "@/const";
-import person from "@/assets/person_1.jpg.webp";
+import { HOWITWORKS, OURSERVICES } from "@/const";
 import { Header } from "@/components/Header";
 import { useRef } from "react";
 import { HeaderToScroll } from "@/components/HeaderToScroll";
 export const Home = () => {
   const aboutSectionRef = useRef(null);
   const howItWorksSectionRef = useRef(null);
-  const ourTeamSectionRef = useRef(null);
+  // const ourTeamSectionRef = useRef(null);
   const servicesSectionRef = useRef(null);
   const contactSectionRef = useRef(null);
 
@@ -76,7 +68,6 @@ export const Home = () => {
             alt=""
           />
         </section>
-
         {/* HOW IT WORKS */}
         <section
           ref={howItWorksSectionRef}
@@ -119,8 +110,7 @@ export const Home = () => {
             })}
           </div>
         </section>
-
-        {/* OUR TEAM */}
+        {/* OUR TEAM
         <section
           ref={ourTeamSectionRef}
           className="relative flex flex-col items-center justify-center py-20 "
@@ -176,8 +166,7 @@ export const Home = () => {
               );
             })}
           </div>
-        </section>
-
+        </section> */}
         {/*Services */}
         <section
           ref={servicesSectionRef}
@@ -212,7 +201,6 @@ export const Home = () => {
             })}
           </div>
         </section>
-
         {/* CONTACT */}
         <section
           ref={contactSectionRef}
@@ -240,7 +228,6 @@ export const Home = () => {
             </div>
           </div>
         </section>
-
         <footer className="flex flex-wrap p-20  bg-stone-600 text-white">
           <div className="flex flex-wrap justify-center max-w-6xl mx-auto lg:gap-40 gap-10">
             <div className="flex flex-col">
