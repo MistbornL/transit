@@ -34,7 +34,7 @@ export const Header: React.FC<HeaderProps> = (
   //   setIsMenuOpen(false); // Close the menu after scrolling
   // };
   return (
-    <div className={`flex relative h-[100vh] w-full menu`}>
+    <div className={`flex relative h-[820px] w-full menu`}>
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       <img className="w-full object-cover" src={hero} alt="travel" />
