@@ -5,26 +5,35 @@ import {
 } from "@/components/ui/navigation-menu";
 import { MENUITEMS } from "@/const";
 import { useAnimation, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const HeaderToScroll = () => {
   const controls = useAnimation();
+  const [isVisible, setIsVisible] = useState(false);
 
-  const handleScroll = () => {
-    console.log(window.scrollY);
-    if (window.scrollY > 10) {
-      controls.start({ backgroundColor: "rgba(0, 0, 0, 0.9)" });
-    } else {
-      controls.start({ backgroundColor: "transparent" });
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 290 && !isVisible) {
+        setIsVisible(true);
+        controls.start({ translateY: 0 });
+      } else if (window.scrollY <= 290 && isVisible) {
+        setIsVisible(false);
+        controls.start({ translateY: -100 });
+      }
+    };
 
-  window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [controls, isVisible]);
   return (
     <motion.div
       animate={controls}
-      className="py-2 w-full md:flex hidden justify-between max-w-5xl mt-10 mx-auto text-white top-0 z-50"
+      transition={{ duration: 0.2 }}
+      className={`fixed bg-white px-40 py-8 items-center w-full md:flex hidden justify-between text-black top-0 z-50`}
     >
       <h1 className="text-3xl ">Logis</h1>
 
