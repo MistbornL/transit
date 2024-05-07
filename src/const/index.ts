@@ -4,8 +4,7 @@ export const MENUITEMS = [
   { title: "Home", link: "/" },
   { title: "About us", link: "/about" },
   { title: "Services", link: "/services" },
-  { title: "industries", link: "/industries" },
-  { title: "Blog", link: "blog" },
+  { title: "partners", link: "/industries" },
   { title: "Contact", link: "/contact" },
 ];
 
