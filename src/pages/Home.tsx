@@ -1,11 +1,4 @@
-import {
-  ArrowLeft,
-  ArrowRight,
-  Camera,
-  Check,
-  Facebook,
-  Instagram,
-} from "lucide-react";
+import { Check, Facebook, Instagram } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import about from "@/assets/about.webp";
 import { HOWITWORKS, OURSERVICES } from "@/const";
@@ -28,7 +21,6 @@ import {
 import { motion, useAnimation } from "framer-motion";
 import Autoplay from "embla-carousel-autoplay";
 import { Button } from "@/components/ui/button";
-import useEmblaCarousel from "embla-carousel-react";
 
 export const Home = () => {
   const homesSectionRef = useRef(null);
