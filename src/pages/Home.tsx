@@ -428,35 +428,27 @@ export const Home = () => {
             <h1 className="uppercase text-4xl text-primary">Partners</h1>
             <Separator className="h-1 w-24 bg-primary" />
           </div>
-          <div className="w-full max-w-6xl">
+          <div className="w-full">
             <Carousel
               plugins={[plugin.current]}
               onMouseEnter={plugin.current.stop}
               onMouseLeave={plugin.current.reset}
             >
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-10">
                 <CarouselContent className="relative ">
-                  <CarouselItem
-                    onMouseEnter={() => handleHover(true)}
-                    onMouseLeave={() => handleHover(false)}
-                    className="relative basis-1/3 hover:scale-105 transition-all cursor-pointer"
-                  >
-                    <img src={about} />
-                    <motion.h1
-                      initial={{ y: 100 }}
-                      className="text-center text-lg text-white"
-                      animate={controls}
-                    >
-                      Air Transports
-                    </motion.h1>
-                  </CarouselItem>
-                  <CarouselItem className="basis-1/3">
+                  <CarouselItem className="basis-1/4 p-0">
                     <img src={about} />
                   </CarouselItem>
-                  <CarouselItem className="basis-1/3">
+                  <CarouselItem className="basis-1/4 p-0">
                     <img src={about} />
                   </CarouselItem>
-                  <CarouselItem className="basis-1/3">
+                  <CarouselItem className="basis-1/4 p-0">
+                    <img src={about} />
+                  </CarouselItem>
+                  <CarouselItem className="basis-1/4 p-0">
+                    <img src={about} />
+                  </CarouselItem>
+                  <CarouselItem className="basis-1/4 p-0">
                     <img src={about} />
                   </CarouselItem>
                 </CarouselContent>
