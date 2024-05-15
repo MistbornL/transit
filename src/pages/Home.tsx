@@ -53,15 +53,15 @@ export const Home = () => {
   }, [controls, isVisible]);
 
   // Function to handle hover state
-  const handleHover = (isHovered: boolean) => {
-    if (isHovered) {
-      // On hover, animate y to 100
-      controls.start({ y: -100 });
-    } else {
-      // On hover out, animate y to -200
-      controls.start({ y: 100 });
-    }
-  };
+  // const handleHover = (isHovered: boolean) => {
+  //   if (isHovered) {
+  //     // On hover, animate y to 100
+  //     controls.start({ y: -100 });
+  //   } else {
+  //     // On hover out, animate y to -200
+  //     controls.start({ y: 100 });
+  //   }
+  // };
 
   const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
     if (sectionRef.current) {
