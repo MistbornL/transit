@@ -47,8 +47,8 @@ export const HeaderToScroll = () => {
                 <NavigationMenuItem key={index}>
                   <Link
                     className={`${
-                      location.pathname === item.link && "text-orange-600"
-                    }  hover:text-orange-600 transition-all`}
+                      location.pathname === item.link && "text-primary"
+                    }  hover:text-primary transition-all`}
                     to={item.link}
                   >
                     {item.title}

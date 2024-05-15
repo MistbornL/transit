@@ -1,10 +1,23 @@
-import { Check, Facebook, Instagram } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Camera,
+  Check,
+  Facebook,
+  Instagram,
+} from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import about from "@/assets/about.webp";
 import { HOWITWORKS, OURSERVICES } from "@/const";
-import { Header } from "@/components/Header";
-import { useRef, useState } from "react";
-import { HeaderToScroll } from "@/components/HeaderToScroll";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
+import hero from "../assets/hero_bg_2.jpg.webp";
+import { MENUITEMS } from "../const";
+import { Menu } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -14,17 +27,40 @@ import {
 } from "@/components/ui/carousel";
 import { motion, useAnimation } from "framer-motion";
 import Autoplay from "embla-carousel-autoplay";
+import { Button } from "@/components/ui/button";
+import useEmblaCarousel from "embla-carousel-react";
 
 export const Home = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  const homesSectionRef = useRef(null);
+  const carouselRef = useRef(null);
   const aboutSectionRef = useRef(null);
-  const howItWorksSectionRef = useRef(null);
-  // const ourTeamSectionRef = useRef(null);
   const servicesSectionRef = useRef(null);
+  const partnersSectionRef = useRef(null);
   const contactSectionRef = useRef(null);
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
-
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const controls = useAnimation();
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    controls.set({ translateY: -110 });
+
+    const handleScroll = () => {
+      console.log(window.scrollY);
+      if (window.scrollY > 290 && !isVisible) {
+        setIsVisible(true);
+        controls.start({ translateY: 0 });
+      } else if (window.scrollY <= 290 && isVisible) {
+        setIsVisible(false);
+        controls.start({ translateY: -290 });
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [controls, isVisible]);
 
   // Function to handle hover state
   const handleHover = (isHovered: boolean) => {
@@ -36,11 +72,181 @@ export const Home = () => {
       controls.start({ y: 100 });
     }
   };
+
+  const scrollToSection = (sectionRef: React.RefObject<HTMLDivElement>) => {
+    if (sectionRef.current) {
+      window.scrollTo({
+        top: sectionRef.current.offsetTop - 100, // Adjust the offset value as needed
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="flex flex-col">
-      <header>
-        <Header />
-        <HeaderToScroll />
+      <header ref={homesSectionRef}>
+        <div className={`flex relative h-[820px] w-full menu`}>
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+
+          <img className="w-full object-cover" src={hero} alt="travel" />
+          {/* middle */}
+          <div className="absolute w-full h-full flex-col flex gap-40">
+            <div className="flex md:hidden justify-center flex-col items-center gap-4">
+              <h1 className="text-5xl text-white">Logis</h1>
+              <Menu
+                onClick={() => {
+                  setIsMenuOpen(!isMenuOpen);
+                }}
+                className="relative"
+                color="white"
+                size={40}
+              />
+            </div>
+
+            {isMenuOpen && (
+              <div className="absolute z-20 w-56 rounded-md items-center flex flex-col px-4 py-2 top-28 bg-slate-50 ">
+                <NavigationMenu>
+                  <NavigationMenuList className="flex justify-center items-center ">
+                    <div className="flex flex-col">
+                      {MENUITEMS.map((item, index) => {
+                        return (
+                          <NavigationMenuItem key={index} className={``}>
+                            <a
+                              className={`py-4 hover:text-primary transition-all duration-200 items-center flex justify-center text-center cursor-pointer`}
+                              onClick={() =>
+                                scrollToSection(
+                                  // @ts-ignore
+                                  item.title.toLowerCase().includes("home")
+                                    ? homesSectionRef
+                                    : item.title.toLowerCase().includes("about")
+                                    ? aboutSectionRef
+                                    : item.title
+                                        .toLowerCase()
+                                        .includes("services")
+                                    ? servicesSectionRef
+                                    : item.title
+                                        .toLowerCase()
+                                        .includes("partners")
+                                    ? partnersSectionRef
+                                    : item.title
+                                        .toLowerCase()
+                                        .includes("contact")
+                                    ? contactSectionRef
+                                    : null
+                                )
+                              }
+                            >
+                              {item.title}
+                            </a>
+                          </NavigationMenuItem>
+                        );
+                      })}
+                    </div>
+                  </NavigationMenuList>
+                </NavigationMenu>
+              </div>
+            )}
+            <div className="py-2 w-full md:flex hidden justify-between max-w-5xl mt-10 mx-auto text-white top-0 z-50">
+              <h1 className="text-3xl ">Logis</h1>
+
+              <NavigationMenu>
+                <NavigationMenuList className="flex justify-between items-center">
+                  <div className="flex gap-10">
+                    {MENUITEMS.map((item, index) => {
+                      return (
+                        <NavigationMenuItem key={index}>
+                          <a
+                            className={` hover:text-primary transition-all duration-200 items-center flex justify-center text-center cursor-pointer`}
+                            onClick={() =>
+                              scrollToSection(
+                                // @ts-ignore
+                                item.title.toLowerCase().includes("home")
+                                  ? homesSectionRef
+                                  : item.title.toLowerCase().includes("about")
+                                  ? aboutSectionRef
+                                  : item.title
+                                      .toLowerCase()
+                                      .includes("services")
+                                  ? servicesSectionRef
+                                  : item.title
+                                      .toLowerCase()
+                                      .includes("partners")
+                                  ? partnersSectionRef
+                                  : item.title.toLowerCase().includes("contact")
+                                  ? contactSectionRef
+                                  : null
+                              )
+                            }
+                          >
+                            {item.title}
+                          </a>
+                        </NavigationMenuItem>
+                      );
+                    })}
+                  </div>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
+
+            <div className="flex justify-center gap-10 flex-col items-center">
+              <div className="flex flex-col items-center space-y-2">
+                <h1 className="uppercase text-white md:text-7xl text-4xl">
+                  we make shipping
+                </h1>
+                <h3 className="text-gray-400 text-2xl">A logistic company</h3>
+              </div>
+
+              <Button
+                onClick={() => scrollToSection(aboutSectionRef)}
+                className="uppercase bg-primary rounded-sm px-20 py-8 text-lg hover:bg-transparent hover:border-solid hover:ring-1 hover:ring-white text-white transition-all"
+              >
+                get started!
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        <motion.div
+          animate={controls}
+          transition={{ duration: 0.2 }}
+          className={`fixed shadow-md bg-white px-40 py-6 items-center w-full md:flex hidden justify-between text-black top-0 z-50`}
+        >
+          <h1 className="text-3xl ">Logis</h1>
+
+          <NavigationMenu>
+            <NavigationMenuList className="flex justify-between items-center">
+              <div className="flex gap-10">
+                {MENUITEMS.map((item, index) => {
+                  return (
+                    <NavigationMenuItem key={index}>
+                      <a
+                        className={`py-4 hover:text-primary transition-all duration-200 items-center flex justify-center text-center cursor-pointer`}
+                        onClick={() =>
+                          scrollToSection(
+                            // @ts-ignore
+                            item.title.toLowerCase().includes("home")
+                              ? homesSectionRef
+                              : item.title.toLowerCase().includes("about")
+                              ? aboutSectionRef
+                              : item.title.toLowerCase().includes("services")
+                              ? servicesSectionRef
+                              : item.title.toLowerCase().includes("partners")
+                              ? partnersSectionRef
+                              : item.title.toLowerCase().includes("contact")
+                              ? contactSectionRef
+                              : null
+                          )
+                        }
+                      >
+                        {item.title}
+                      </a>
+                    </NavigationMenuItem>
+                  );
+                })}
+              </div>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </motion.div>
       </header>
       <div className="flex flex-col">
         {/* ABOUT SECTION */}
@@ -55,10 +261,10 @@ export const Home = () => {
           />
           <div className="flex flex-col gap-10">
             <div>
-              <h1 className="uppercase text-orange-600 font-bold text-3xl ">
+              <h1 className="uppercase text-primary font-bold text-3xl ">
                 about us!
               </h1>
-              <Separator className="bg-orange-600 w-20 h-1" />
+              <Separator className="bg-primary w-20 h-1" />
               <p className="max-w-xl mt-4">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Blanditiis deleniti reprehenderit animi est eaque corporis!
@@ -94,23 +300,21 @@ export const Home = () => {
         </section>
         {/* HOW IT WORKS */}
         <section
-          ref={howItWorksSectionRef}
+          ref={partnersSectionRef}
           className="relative work flex flex-col items-center justify-center py-20"
         >
           <div className="absolute inset-0 bg-black opacity-70"></div>
 
           <div className="z-10 flex flex-col mb-20 gap-4 items-center">
-            <h1 className="uppercase text-4xl text-orange-600">
-              how it works!
-            </h1>
-            <Separator className="h-1 w-24 bg-orange-600" />
+            <h1 className="uppercase text-4xl text-primary">how it works!</h1>
+            <Separator className="h-1 w-24 bg-primary" />
           </div>
 
           <div className="z-10 w-full flex max-w-6xl justify-center space-x-10 flex-wrap mx-auto gap-10">
             {HOWITWORKS.map((item) => {
               return (
                 <div key={item.numeric} className="flex flex-col">
-                  <div className="rounded-full bg-orange-600 w-14 h-14 text-center justify-center flex border-solid border-white border-1 items-center text-white mb-10">
+                  <div className="rounded-full bg-primary w-14 h-14 text-center justify-center flex border-solid border-white border-1 items-center text-white mb-10">
                     {item.numeric}
                   </div>
 
@@ -140,8 +344,8 @@ export const Home = () => {
           className="relative flex flex-col items-center justify-center py-20 "
         >
           <div className="z-10 flex flex-col mb-20 gap-4 items-center">
-            <h1 className="uppercase text-4xl text-orange-600">our team</h1>
-            <Separator className="h-1 w-24 bg-orange-600" />
+            <h1 className="uppercase text-4xl text-primary">our team</h1>
+            <Separator className="h-1 w-24 bg-primary" />
           </div>
 
           <div className="z-10 w-full flex  max-w-6xl justify-center space-x-10 flex-wrap mx-auto gap-10">
@@ -198,8 +402,8 @@ export const Home = () => {
           className="relative flex-col items-center justify-center py-20 bg-gray-100 border-t-[1px]"
         >
           <div className="z-10 flex flex-col mb-20 gap-4 items-center">
-            <h1 className="uppercase text-4xl text-orange-600">our Services</h1>
-            <Separator className="h-1 w-24 bg-orange-600" />
+            <h1 className="uppercase text-4xl text-primary">our Services</h1>
+            <Separator className="h-1 w-24 bg-primary" />
           </div>
 
           <div className="z-10 w-full flex max-w-6xl space-x-4 flex-wrap mx-auto gap-10 justify-center">
@@ -214,7 +418,7 @@ export const Home = () => {
                         {item.description}
                       </p>
 
-                      <button className="bg-transparent text-start text-orange-500">
+                      <button className="bg-transparent text-start text-primary">
                         Learn More
                       </button>
                     </div>
@@ -226,46 +430,53 @@ export const Home = () => {
         </section>
 
         {/* PARTNERS */}
-        <section className="flex flex-col items-center w-full mt-14">
+        <section
+          ref={partnersSectionRef}
+          className="flex flex-col items-center w-full mt-14"
+        >
           <div className="z-10 flex flex-col mb-10 gap-4 items-center">
-            <h1 className="uppercase text-4xl text-orange-600">Partners</h1>
-            <Separator className="h-1 w-24 bg-orange-600" />
+            <h1 className="uppercase text-4xl text-primary">Partners</h1>
+            <Separator className="h-1 w-24 bg-primary" />
           </div>
-          <Carousel
-            plugins={[plugin.current]}
-            className="w-full max-w-6xl"
-            onMouseEnter={plugin.current.stop}
-            onMouseLeave={plugin.current.reset}
-          >
-            <CarouselContent>
-              <CarouselItem
-                onMouseEnter={() => handleHover(true)}
-                onMouseLeave={() => handleHover(false)}
-                className="relative basis-1/3 hover:scale-105 transition-all cursor-pointer"
-              >
-                <img src={about} />
-
-                <motion.h1
-                  initial={{ y: 100 }}
-                  className="text-center text-lg text-white"
-                  animate={controls}
-                >
-                  Air Transports
-                </motion.h1>
-              </CarouselItem>
-              <CarouselItem className="basis-1/3">
-                <img src={about} />
-              </CarouselItem>
-              <CarouselItem className="basis-1/3">
-                <img src={about} />
-              </CarouselItem>
-              <CarouselItem className="basis-1/3">
-                <img src={about} />
-              </CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+          <div className="w-full max-w-6xl">
+            <Carousel
+              plugins={[plugin.current]}
+              onMouseEnter={plugin.current.stop}
+              onMouseLeave={plugin.current.reset}
+            >
+              <div className="flex flex-col">
+                <CarouselContent className="relative ">
+                  <CarouselItem
+                    onMouseEnter={() => handleHover(true)}
+                    onMouseLeave={() => handleHover(false)}
+                    className="relative basis-1/3 hover:scale-105 transition-all cursor-pointer"
+                  >
+                    <img src={about} />
+                    <motion.h1
+                      initial={{ y: 100 }}
+                      className="text-center text-lg text-white"
+                      animate={controls}
+                    >
+                      Air Transports
+                    </motion.h1>
+                  </CarouselItem>
+                  <CarouselItem className="basis-1/3">
+                    <img src={about} />
+                  </CarouselItem>
+                  <CarouselItem className="basis-1/3">
+                    <img src={about} />
+                  </CarouselItem>
+                  <CarouselItem className="basis-1/3">
+                    <img src={about} />
+                  </CarouselItem>
+                </CarouselContent>
+                <div className="justify-center flex gap-10">
+                  <CarouselPrevious className="relative border-none shadow-none w-14 h-14" />
+                  <CarouselNext className="relative border-none shadow-none w-14 h-14" />
+                </div>
+              </div>
+            </Carousel>
+          </div>
         </section>
 
         {/* CONTACT */}
@@ -274,8 +485,8 @@ export const Home = () => {
           className="relative flex-col items-center justify-center py-20 "
         >
           <div className="z-10 flex flex-col mb-20 gap-4 items-center">
-            <h1 className="uppercase text-4xl text-orange-600">Contact Us</h1>
-            <Separator className="h-1 w-24 bg-orange-600" />
+            <h1 className="uppercase text-4xl text-primary">Contact Us</h1>
+            <Separator className="h-1 w-24 bg-primary" />
           </div>
 
           <div className="z-10 w-full flex max-w-6xl space-x-4 flex-wrap mx-auto gap-10 justify-center">
@@ -321,13 +532,6 @@ export const Home = () => {
                 <Instagram />
               </div>
             </div>
-          </div>
-          <div className="flex flex-col mx-auto mt-10 gap-4 items-center w-full">
-            <Separator className="w-full bg-stone-400" />
-            <h4>
-              Copyright ©2024 All rights reserved | This template is made with
-              by Colorlib
-            </h4>
           </div>
         </footer>
       </div>
