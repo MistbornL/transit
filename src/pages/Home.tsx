@@ -24,7 +24,6 @@ import { Button } from "@/components/ui/button";
 
 export const Home = () => {
   const homesSectionRef = useRef(null);
-  const carouselRef = useRef(null);
   const aboutSectionRef = useRef(null);
   const servicesSectionRef = useRef(null);
   const partnersSectionRef = useRef(null);
