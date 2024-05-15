@@ -36,7 +36,6 @@ export const Home = () => {
     controls.set({ translateY: -110 });
 
     const handleScroll = () => {
-      console.log(window.scrollY);
       if (window.scrollY > 290 && !isVisible) {
         setIsVisible(true);
         controls.start({ translateY: 0 });
