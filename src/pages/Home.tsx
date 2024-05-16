@@ -33,7 +33,7 @@ export const Home = () => {
   const controls = useAnimation();
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
-    controls.set({ translateY: -110 });
+    controls.set({ translateY: -120 });
 
     const handleScroll = () => {
       if (window.scrollY > 290 && !isVisible) {
@@ -41,7 +41,7 @@ export const Home = () => {
         controls.start({ translateY: 0 });
       } else if (window.scrollY <= 290 && isVisible) {
         setIsVisible(false);
-        controls.start({ translateY: -290 });
+        controls.start({ translateY: -200 });
       }
     };
 
