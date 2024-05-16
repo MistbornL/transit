@@ -21,7 +21,7 @@ import {
 import { motion, useAnimation } from "framer-motion";
 import Autoplay from "embla-carousel-autoplay";
 import { Button } from "@/components/ui/button";
-
+import logo from "@/assets/logo.png";
 export const Home = () => {
   const homesSectionRef = useRef(null);
   const aboutSectionRef = useRef(null);
@@ -82,7 +82,7 @@ export const Home = () => {
           {/* middle */}
           <div className="absolute w-full h-full flex-col flex gap-40">
             <div className="flex md:hidden justify-center flex-col items-center gap-4">
-              <h1 className="text-5xl text-white">Logis</h1>
+              <img src="" alt="" />
               <Menu
                 onClick={() => {
                   setIsMenuOpen(!isMenuOpen);
@@ -136,8 +136,13 @@ export const Home = () => {
                 </NavigationMenu>
               </div>
             )}
-            <div className="py-2 w-full md:flex hidden justify-between max-w-5xl mt-10 mx-auto text-white top-0 z-50">
-              <h1 className="text-3xl ">Logis</h1>
+            <div className="py-2 w-full md:flex hidden justify-between max-w-5xl mx-auto text-white top-0 z-50 items-center">
+              <img
+                src={logo}
+                alt="BBGROUP"
+                className="w-34 h-24 cursor-pointer"
+                onClick={() => scrollToSection(homesSectionRef)}
+              />
 
               <NavigationMenu>
                 <NavigationMenuList className="flex justify-between items-center">
@@ -150,9 +155,8 @@ export const Home = () => {
                             onClick={() =>
                               scrollToSection(
                                 // @ts-ignore
-                                item.title.toLowerCase().includes("home")
-                                  ? homesSectionRef
-                                  : item.title.toLowerCase().includes("about")
+
+                                item.title.toLowerCase().includes("about")
                                   ? aboutSectionRef
                                   : item.title
                                       .toLowerCase()
@@ -199,9 +203,9 @@ export const Home = () => {
         <motion.div
           animate={controls}
           transition={{ duration: 0.2 }}
-          className={`fixed shadow-md bg-white px-40 py-6 items-center w-full md:flex hidden justify-between text-black top-0 z-50`}
+          className={`fixed shadow-md bg-white px-40 py-3 items-center w-full md:flex hidden justify-between text-black top-0 z-50`}
         >
-          <h1 className="text-3xl ">Logis</h1>
+          <img src={logo} alt="BBGROUP" className="w-34 h-24 cursor-pointer" />
 
           <NavigationMenu>
             <NavigationMenuList className="flex justify-between items-center">
@@ -501,10 +505,30 @@ export const Home = () => {
             <div className="flex flex-col gap-4">
               <h1 className="font-bold text-lg">Quick Links</h1>
               <ul>
-                <li>About Us</li>
-                <li>Services</li>
-                <li>About Us</li>
-                <li>About Us</li>
+                <li
+                  className="cursor-pointer hover:underline"
+                  onClick={() => scrollToSection(aboutSectionRef)}
+                >
+                  About Us
+                </li>
+                <li
+                  className="cursor-pointer hover:underline"
+                  onClick={() => scrollToSection(servicesSectionRef)}
+                >
+                  Services
+                </li>
+                <li
+                  className="cursor-pointer hover:underline"
+                  onClick={() => scrollToSection(partnersSectionRef)}
+                >
+                  Partners
+                </li>
+                <li
+                  className="cursor-pointer hover:underline"
+                  onClick={() => scrollToSection(contactSectionRef)}
+                >
+                  Contact
+                </li>
               </ul>
             </div>
             <div className="flex flex-col gap-4">
