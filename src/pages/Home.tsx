@@ -203,7 +203,7 @@ export const Home = () => {
         <motion.div
           animate={controls}
           transition={{ duration: 0.2 }}
-          className={`fixed shadow-md bg-white px-40 py-3 items-center w-full md:flex hidden justify-between text-black top-0 z-50`}
+          className={`fixed shadow-md bg-white px-40  items-center w-full md:flex hidden justify-between text-black top-0 z-50`}
         >
           <img src={logo} alt="BBGROUP" className="w-34 h-24 cursor-pointer" />
 
