@@ -209,12 +209,12 @@ export const Home = () => {
 
           <NavigationMenu>
             <NavigationMenuList className="flex justify-between items-center">
-              <div className="flex gap-10">
+              <div className="flex gap-10 items-center">
                 {MENUITEMS.map((item, index) => {
                   return (
                     <NavigationMenuItem key={index}>
                       <a
-                        className={`py-4 hover:text-primary transition-all duration-200 items-center flex justify-center text-center cursor-pointer`}
+                        className={`hover:text-primary transition-all duration-200 items-center flex justify-center text-center cursor-pointer`}
                         onClick={() =>
                           scrollToSection(
                             // @ts-ignore
@@ -304,7 +304,7 @@ export const Home = () => {
             <Separator className="h-1 w-24 bg-primary" />
           </div>
 
-          <div className="z-10 w-full flex max-w-6xl justify-center space-x-10 flex-wrap mx-auto gap-10">
+          <div className="z-10 w-full flex max-w-6xl justify-center  flex-wrap mx-auto gap-20">
             {HOWITWORKS.map((item) => {
               return (
                 <div key={item.numeric} className="flex flex-col">
