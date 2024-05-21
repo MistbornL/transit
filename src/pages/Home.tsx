@@ -7,7 +7,10 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import hero from "../assets/hero_bg_2.jpg.webp";
+import main from "../assets/main.webp";
+import partners1 from "@/assets/partners1.jpg";
+import partners2 from "@/assets/partners2.jpg";
+
 import { MENUITEMS } from "../const";
 import { Menu } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -78,7 +81,7 @@ export const Home = () => {
         <div className={`flex relative h-[820px] w-full menu`}>
           <div className="absolute inset-0 bg-black opacity-50"></div>
 
-          <img className="w-full object-cover" src={hero} alt="travel" />
+          <img className="w-full object-cover" src={main} alt="travel" />
           {/* middle */}
           <div className="absolute w-full h-full flex-col flex gap-40">
             <div className="flex md:hidden justify-center flex-col items-center gap-4">
@@ -300,7 +303,7 @@ export const Home = () => {
           <div className="absolute inset-0 bg-black opacity-70"></div>
 
           <div className="z-10 flex flex-col mb-20 gap-4 items-center">
-            <h1 className="uppercase text-4xl text-primary">how it works!</h1>
+            <h1 className="uppercase text-4xl text-white">how it works!</h1>
             <Separator className="h-1 w-24 bg-primary" />
           </div>
 
@@ -440,20 +443,11 @@ export const Home = () => {
             >
               <div className="flex flex-col gap-10">
                 <CarouselContent className="relative ">
-                  <CarouselItem className="basis-1/4 p-0">
-                    <img src={about} />
+                  <CarouselItem className="basis-1/2 p-0">
+                    <img src={partners1} />
                   </CarouselItem>
-                  <CarouselItem className="basis-1/4 p-0">
-                    <img src={about} />
-                  </CarouselItem>
-                  <CarouselItem className="basis-1/4 p-0">
-                    <img src={about} />
-                  </CarouselItem>
-                  <CarouselItem className="basis-1/4 p-0">
-                    <img src={about} />
-                  </CarouselItem>
-                  <CarouselItem className="basis-1/4 p-0">
-                    <img src={about} />
+                  <CarouselItem className="basis-1/2 p-0">
+                    <img src={partners2} />
                   </CarouselItem>
                 </CarouselContent>
                 <div className="justify-center flex gap-10">
@@ -492,7 +486,7 @@ export const Home = () => {
             </div>
           </div>
         </section>
-        <footer className="flex flex-wrap p-20  bg-stone-600 text-white">
+        <footer className="flex flex-wrap p-20  bg-primary text-white">
           <div className="flex flex-wrap justify-center max-w-6xl mx-auto lg:gap-40 gap-10">
             <div className="flex flex-col">
               <h1 className="font-bold text-lg">About Us</h1>
