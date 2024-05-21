@@ -442,12 +442,12 @@ export const Home = () => {
               onMouseLeave={plugin.current.reset}
             >
               <div className="flex flex-col gap-10">
-                <CarouselContent className="relative ">
-                  <CarouselItem className="basis-1/2 p-0">
-                    <img src={partners1} />
+                <CarouselContent className="relative flex items-center">
+                  <CarouselItem className="basis-1/2 p-0 flex items-center justify-center">
+                    <img className="w-[50%]" src={partners1} />
                   </CarouselItem>
-                  <CarouselItem className="basis-1/2 p-0">
-                    <img src={partners2} />
+                  <CarouselItem className="basis-1/2 p-0 flex justify-center">
+                    <img className="w-[250px]" src={partners2} />
                   </CarouselItem>
                 </CarouselContent>
                 <div className="justify-center flex gap-10">
