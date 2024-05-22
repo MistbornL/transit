@@ -97,7 +97,7 @@ export const Home = () => {
             </div>
 
             {isMenuOpen && (
-              <div className="absolute z-20 w-56 rounded-md items-center flex flex-col px-4 py-2 top-28 bg-slate-50 ">
+              <div className="absolute z-20 left-20 w-56 rounded-md items-center flex flex-col px-4 py-2 top-28 bg-slate-50 ">
                 <NavigationMenu>
                   <NavigationMenuList className="flex justify-center items-center ">
                     <div className="flex flex-col">
